@@ -1,6 +1,6 @@
 import { getArticles } from "@/lib/articles";
 import ArticleList from "@/components/ArticleList";
-
+export const dynamic = "force-dynamic";
 const FEED_URLS = [
   "https://www.offshorewind.biz/feed/",
   "https://news.google.com/rss/search?q=%22offshore+wind%22&hl=en-US&gl=US&ceid=US:en"
