@@ -16,9 +16,19 @@ const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 export async function getArticles(feedUrls: string[]): Promise<Article[]> {
   const parser = new Parser();
 
-  const feeds = await Promise.all(
-    feedUrls.map((url) => parser.parseURL(url))
-  );
+ const results = await Promise.allSettled(
+  feedUrls.map((url) => parser.parseURL(url))
+);
+
+const feeds = [];
+for (let i = 0; i < results.length; i++) {
+  const result = results[i];
+  if (result.status === "fulfilled") {
+    feeds.push(result.value);
+  } else {
+    console.error(`Feed failed to load: ${feedUrls[i]}`, result.reason);
+  }
+}
 
   const articles = feeds.flatMap((feed) =>
     feed.items.map((item, index) => ({
@@ -30,7 +40,13 @@ export async function getArticles(feedUrls: string[]): Promise<Article[]> {
       pubDate: item.pubDate,
     }))
   );
-
+  
+const uniqueArticlesMap = new Map<string, Article>();
+for (const article of allArticles) {
+  uniqueArticlesMap.set(article.link, article);
+}
+  
+const uniqueArticles = Array.from(uniqueArticlesMap.values());
   const now = Date.now();
   const recentArticles = articles.filter((article) => {
     if (!article.pubDate) return false;
