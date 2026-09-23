@@ -3,6 +3,7 @@ import ArticleList from "@/components/ArticleList";
 
 const FEED_URLS = [
   'https://news.google.com/rss/search?q=%22Taiwan+offshore+wind%22&hl=en-US&gl=US&ceid=US:en',
+  "https://news.google.com/rss/search?q=%E9%9B%A2%E5%B2%B8%E9%A2%A8%E9%9B%BB&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
 ];
 
 export default async function TaiwanPage() {
