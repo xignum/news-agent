@@ -1,17 +1,11 @@
 import { getArticles } from "@/lib/articles";
+import { TAIWAN_FEEDS } from "@/lib/feeds";
 import ArticleList from "@/components/ArticleList";
 
 export const dynamic = "force-dynamic";
 
-const FEED_URLS = [
-  'https://news.google.com/rss/search?q=%22Taiwan+offshore+wind%22&hl=en-US&gl=US&ceid=US:en',
-  "https://news.google.com/rss/search?q=%E9%9B%A2%E5%B2%B8%E9%A2%A8%E9%9B%BB&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
-  "https://news.google.com/rss/search?q=%E9%9B%A2%E5%B2%B8%E9%A2%A8%E9%9B%BB+%E5%8F%B0%E7%81%A3&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
-  "https://news.google.com/rss/search?q=%E9%9B%A2%E5%B2%B8%E9%A2%A8%E9%9B%BB+source:cna.com.tw&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
-];
-
 export default async function TaiwanPage() {
-  const { articles, failedFeedCount } = await getArticles(FEED_URLS);
+  const { articles, failedFeedCount } = await getArticles(TAIWAN_FEEDS);
 
   return (
     <main className="max-w-2xl mx-auto p-6">
