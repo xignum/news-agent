@@ -18,8 +18,7 @@ export default function Nav() {
 
       {/* Right side: tools/features, separate from news categories */}
       <div className="flex gap-4">
-        <Link href="/graphs" className="hover:underline">
-          Graphs
+        
         </Link>
       </div>
     </nav>

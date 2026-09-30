@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 export const dynamic = "force-dynamic";
 const FEED_URLS = [
   "   http://news.google.com/rss/search?q=%22Taiwan+offshore+wind%22&hl=en-US&gl=US&ceid=US:en",
+  "https://news.google.com/rss/search?q=%22offshore+wind+farm%22+-onshore&hl=en-US&gl=US&ceid=US:en"
   // add more feed URLs here to include them on the "All" page
 ];
 
